@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Georgia';
+    src: url('Georgia.eot');
+    src: url('Georgia.eot?#iefix') format('embedded-opentype'),
+        url('Georgia.woff2') format('woff2'),
+        url('Georgia.woff') format('woff'),
+        url('Georgia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue Cyrillic';
+    src: url('BebasNeueCyrillic.eot');
+    src: url('BebasNeueCyrillic.eot?#iefix') format('embedded-opentype'),
+        url('BebasNeueCyrillic.woff2') format('woff2'),
+        url('BebasNeueCyrillic.woff') format('woff'),
+        url('BebasNeueCyrillic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

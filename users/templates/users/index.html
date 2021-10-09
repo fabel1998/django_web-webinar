@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Платформа для вебинаров</title>
+    <link rel="stylesheet" href="{% static  '/css/normalize.css' %}">
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <section class="main">
+        <div class="main__background">
+            <img src="{% static '/img/bg.jpg' %}" alt="backgroung image">
+        </div>
+        <div class="container">
+            <div class="main__wrapper">
+                <div class="main__top top">
+                    <div class="top__logo">
+                        <img src="{% static '/img/logo.png' %}" alt="logo">
+                    </div>
+                    <h1 class="top__title">миигаик</h1>
+                    <h3 class="top__subtitle">платформа для вебинаров</h3>
+                </div>
+                <div class="main__content">
+                    <form action="{% url 'users:index' %}" method="post" class="form" >
+                        {% csrf_token %}
+
+                        <div class="form__elem">
+                            <label for= '{{ form.username.id_for_label }}' class="form__label">имя участника</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="form__elem">
+                            <label for="{{ form.password.id_for_label }}" class="form__label">пароль</label>
+                            {{ form.password }}
+                        </div>
+                        <div>
+                            <input  class="form__btn" type="submit" value="Войти" >
+                        </div>
+                        <div>
+                            <input name="btn_nm" class="form__btn" type="submit"  value="регистрация">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

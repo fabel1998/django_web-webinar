@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АУДИТОРИЯ 409</title>
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="{% static '/js/playerjs.js' %}" type="text/javascript"></script>
+</head>
+<body>
+
+
+    <div class="platform">
+        <div class="platform__bg">
+            <img src="{% static '/img/background.jpg' %}" alt="background">
+        </div>
+        <div class="container">
+            <div class="platform__wrapper">
+                <!-- header -->
+                <div class="platform__header header">
+                    <h3 class="header__title">АУДИТОРИЯ 409</h3>
+                    <button class="header__logout" onclick="window.location.href = '{% url 'users:index' %}'">Выйти</button>
+                </div>
+                <!-- control panel -->
+                <div class="platform__control control">
+                    <ul class="control__list">
+                        <li class="control__item">
+                            <button class="control__btn">трансляция</button>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <!-- content -->
+                <div class="platform__content content">
+<!--                    <div class="content__viewer viewer">-->
+                        <div id="player">
+                            <script>
+                                    var player = new Playerjs({id:"player", file:"Новый проект.mp4"});
+                            </script>
+                        </div>
+<!--                    </div>-->
+                </div>
+                <!-- users -->
+                <div class="platform__users users">
+                    <div class="users__top">
+                        <h3 class="users__title">КОЛИЧЕСТВО УЧАСТНИКОВ:1</h3>
+                    </div>
+                    <div class="users__list-wrapper">
+                         <span class="users__text">{{ user.get_username }}</span>
+                    </div>
+                </div>
+                <!-- chat -->
+                <div class="platform__chat chat">
+                    <h3 class="chat__title">чат</h3>
+                    <div class="chat__wrapper">
+                    {% for comment in comments %}
+                        <blockquote class="blockquote">
+                            {% if comment.comment %}
+                            <p class="mb-0">{{ comment.first_name }} {{ comment.last_name }}</p>
+                            <p class="mb-0">{{ comment.comment}}</p>
+                            {% endif %}
+                        </blockquote>
+                    {% endfor %}
+                    </div>
+                    <form action="{% url 'users:platform' %}" method="post">
+                        {% csrf_token %}
+                         <label  for="{{ comment_form.comment.id_for_label }}">Комментарий</label>
+			            {{ comment_form.comment }}
+                        <input type="submit" value="Отправить">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
